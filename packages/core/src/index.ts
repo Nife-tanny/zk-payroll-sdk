@@ -55,6 +55,7 @@ export type {
 export type {
   ClientConfig,
   RetryPolicyConfig,
+  RetryBudgetsConfig,
   FeatureFlagsConfig,
   ConfigValidationErrorDetail,
   ConfigValidationResult,
@@ -79,6 +80,21 @@ export {
   createPayrollIdempotencyKey,
 } from "./core/idempotency";
 export type { PayrollIdempotencyKeyInput, PaymentIdempotencyKeyInput } from "./core/idempotency";
+export {
+  RetryOperationType,
+  DEFAULT_RETRY_BUDGETS,
+  resolveRetryBudget,
+  computeBackoffDelay,
+  withRetryBudget,
+  RetryBudgetExhaustedError,
+  RetryCancelledError,
+} from "./core/retry-budget";
+export type {
+  RetryBackoffConfig,
+  RetryBudgetConfig,
+  RetryBudgetByOperation,
+  WithRetryBudgetOptions,
+} from "./core/retry-budget";
 export { Semaphore } from "./core/concurrency";
 export * from "./crypto/IProofGenerator";
 export { resolveProofConfig, resolveProofConfigFromEnv } from "./crypto/ProofConfigResolver";
