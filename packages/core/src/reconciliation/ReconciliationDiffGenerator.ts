@@ -172,21 +172,11 @@ export function generateReconciliationDiff(
   return { entries, counts, isFullyReconciled, generatedAt: Date.now() };
 }
 
-/**
- * Object-oriented wrapper around `generateReconciliationDiff` for consumers
- * that hold a diff generator instance (e.g. the reconciliation snapshot
- * builder). Accepts the flattened per-payment outcome list produced by
- * summary extractors and adapts it to the summary shape the core function
- * expects.
- */
 export class ReconciliationDiffGenerator {
   generateDiff(
-    expectedPayments: PaymentExecutionOutcome[],
+    expected: PayrollExecutionSummary,
     observed: ObservedPaymentState[]
   ): ReconciliationDiffResult {
-    return generateReconciliationDiff(
-      { results: expectedPayments } as PayrollExecutionSummary,
-      observed
-    );
+    return generateReconciliationDiff(expected, observed);
   }
 }
